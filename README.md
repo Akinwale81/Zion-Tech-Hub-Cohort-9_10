@@ -1,25 +1,38 @@
 # ZION TECH HUB COHORT 9_10 CANDIDATES ANALYSIS
 An exploratory data analysis project using Zion Tech Hub applicant data to identify high-performing acquisition channel, audience segments, registration trends, and opportunities for optimising market spending
 ## PROJECT OVERVIEW
-Zion Tech Hub runs applied data-skills training programs and collected candidate applications through an online intake form. This project takes the raw form exports, builds a clean data model, and delivers a two-page Power BI report — OVERVIEW and LEADING TRENDS — that tracks who is applying, where they come from, which programs they choose, and how they hear about the program.
-This document is the full analytics write-up behind that dashboard: it walks through the dataset, the preparation which involves cleaning of the dataset using Microsoft Excel, the exploratory analysis performed before any visual was built, the DAX layer that powers every KPI on the report, how the two dashboard pages were designed, and the business insights and recommendations — including a specific ad-budget split and a Cohort 11 growth plan — that the finished dashboard was built to support.
+Zion Tech Hub is a data and technology training community that runs cohort-based programmes in data analytics and AI. This project analyses the registration data for Cohort 9 and 10 (November 2025 to June 2026): 1,231 applicants from 43 countries across six programmes.
+
+Using Power BI, Power Query and DAX, I built a three-page interactive dashboard covering registration volume, geography and programme choice, and acquisition channels. The analysis shows that registration is driven by campaign bursts rather than steady growth, that Nigeria supplies nearly 59% of applicants, and that X (Twitter) now brings in almost nine in ten registrations while WhatsApp, LinkedIn and referrals have faded.
+
+The project ends with practical recommendations for the next cohort: diversify channels, build a trackable referral system, expand into the most responsive countries, and improve the registration form so future analysis can follow applicants through to completion.
+
+The final output is an interactive Power BI dashboard with three pages:
+|Page                              |Question it answers                                             |                                                                                  
+|----------------------------------|----------------------------------------------------------------|
+|Registration Volume               |When do people apply, and who are they?                         |
+|Geography and Programme Choice    |Where are they from, and what do they want to learn?            |
+|Acquisition Channels              |How did they find us, and what should we do about it?           |
+
+### TOOLS USED: Microsoft Excel, Power Pivot, Power BI Desktop, Power Query, DAX.
 
 ## PROJECT HIGHLIGHT
-Consolidated two raw Excel exports into a working Power BI data model using Power Query (null-handling, column renaming, type casting).
-Built 24 custom DAX measures and 4 calculated columns spanning KPI counts, percentages, and date intelligence (month, quarter, weekday) across the three tables.
-Designed a 2-page interactive report (OVERVIEW + LEADING TRENDS) with 8 KPI cards, 3 slicers per page, and 6 chart visuals surfacing demographic, geographic, and channel patterns and 2 tables.
-The Male gender accounted for the most gender representation of 73.8% against the other two (Female gender and the Undisclosed).
-Converted the diagnosis into a specific, percentage-based first ad-budget split across 5 channels/audiences, plus a concrete action plan for growing Cohort 11.
+- 1,231 applicants from 43 countries, across 6 programme choices.
+- Nigeria supplies 58.7% of applicants, and the top four countries (Nigeria, South Africa, Kenya, Ghana) supply 84.6%.
+- X (Twitter) brought in 65% of applicants. WhatsApp and LinkedIn, which were strong in November, nearly disappeared by May.
+- Women are 26% of applicants, but they are 39% of the Healthcare Data Analytics applicants and only 19% of Data Science and   AI/ML applicants.
+- Referrals stayed flat at about 2% of registrations in every month. T
+- The Occupation question was added only in May 2026, so 87.6% of applicants have no occupation recorded. The audience cannot yet be profiled by profession.
 
 ## OBJECTIVES
-Most importantly, growing Zion Tech Hub community, and filling Cohort 11
-Consolidate two near-duplicate raw candidate exports into a clean, query-ready model by using the append query on power query
-Build reusable DAX measures and calculated columns to power gender-split, geographic-reach, program-demand, and peak-period KPIs without hard-coding values.
-Design a two-page Power BI report that lets Zion Tech Hub filter and read candidate volume, geography, gender, program choice, and source at a glance.
-Move past descriptive reporting into prescriptive analysis — identify which acquisition channels are converting, fading, or underused — and translate that into an actionable plans for Cohort 11 growth plan.
+- Measure the size and timing of applicant registrations across the cohort window.
+- Profile applicants by gender, country, and programme choice.
+- Identify which acquisition channels perform, which are declining, and which have never worked.
+- Understand whether different channels reach different kinds of people (by occupation).
+- Turn the findings into practical recommendations for growing the community and running the next cohort's registration.
 
 ## DATASET
-The report is built on two Excel workbooks loaded via Power Query — Zion Hub Challenge Append.xlsx and Zion Hub Challenge Append 2.xlsx — landing as two near-identical candidate tables (Cleaned Append and Cleaned Append (2)), each holding 1,308 rows. 
+One registration table (ZionTechHub, 1,231 rows × 9 source columns) plus a small hand-written Insights table that powers the findings panel.
 |FIELD                             |TYPE                             |NOTE                                                 |                                               
 |----------------------------------|---------------------------------|------------------------------------------------------|
 |Date                              |Date                             |Application timestamp; range Nov 6, 2025 – Jun 4, 2026|
@@ -28,12 +41,11 @@ The report is built on two Excel workbooks loaded via Power Query — Zion Hub C
 |Country                           |Text                             |46 distinct values; renamed from "Country (e.g.       |
 |                                  |                                 |Nigeria, UK)" in one source table                     |
 |Gender                            |Text                             |Male / Female / Prefer not to say                     |
-|Choice of programme               |Text                             |7 distinct programs across both cohorts, including 2  |
+|Choice of programme               |Text                             |6 distinct programs across both cohorts, including 2  |
 |                                  |                                 |pilot tracks introduced in Cohort 10                  |
-|Source                            |Text                             |Renamed from "How did you hear about our Program?"; 7| 
+|How Heard                         |Text                             |Renamed from "How did you hear about our Program?"; 7| 
 |                                  |                                 |channels                                              |
-|Occupation                        |Text                             |Nulls replaced with "Not Collected (Cohort 9)" in     |
-|                                  |                                 |Power Query; effectively only populated for Cohort 10 |
+|Occupation                        |Text                             |collected from May 2026 only                          |
 
 ## DATA PREPARATION
 ### Before performing the analysis , the dataset was prepared to ensure that the data was suitable for analysis and visualisation.  The preparation was done using Microsoft Excel and Power Query. The process include: 
